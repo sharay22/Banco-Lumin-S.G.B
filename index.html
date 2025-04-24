@@ -1,103 +1,33 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumin S.G.B - Portafolio de Productos y Servicios</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-    header { background-color: #004080; color: white; padding: 20px; text-align: center; }
-    nav { background-color: #00264d; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; }
-    .container { padding: 20px; }
-    .section { margin-bottom: 40px; }
-    h2 { color: #004080; }
-    .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    footer { background-color: #004080; color: white; text-align: center; padding: 10px; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Banco Lumin S.G.B</h1>
-    <p>Tu confianza, nuestra prioridad</p>
-  </header>
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; import { Button } from "@/components/ui/button"; import { Card, CardContent } from "@/components/ui/card"; import { Upload } from "lucide-react";
 
-  <nav>
-    <a href="#cuentas">Cuentas</a>
-    <a href="#creditos">Créditos</a>
-    <a href="#inversiones">Inversiones</a>
-    <a href="#seguros">Seguros</a>
-    <a href="#servicios">Servicios Adicionales</a>
-  </nav>
+function FileUpload() { return ( <div className="mt-4"> <label className="block mb-2 font-semibold">Subir archivo PDF relacionado</label> <input
+type="file"
+accept="application/pdf"
+className="block w-full text-sm text-blue-700 bg-blue-100 border border-blue-300 rounded-lg cursor-pointer focus:outline-none"
+/> </div> ); }
 
-  <div class="container">
-    <section id="cuentas" class="section">
-      <h2>Cuentas</h2>
-      <div class="card">
-        <h3>Cuenta Corriente</h3>
-        <p>Administra tus finanzas con facilidad, con chequera incluida y acceso en línea.</p>
-      </div>
-      <div class="card">
-        <h3>Cuenta de Ahorros</h3>
-        <p>Ideal para tus metas de ahorro, con intereses competitivos y sin comisiones ocultas.</p>
-      </div>
-    </section>
+function Logo() { return ( <div className="flex items-center space-x-2 mb-6"> <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl">L</div> <h1 className="text-2xl font-bold text-blue-800">Lumin S.G.B</h1> </div> ); }
 
-    <section id="creditos" class="section">
-      <h2>Créditos</h2>
-      <div class="card">
-        <h3>Crédito Personal</h3>
-        <p>Para lo que necesites, desde estudios hasta viajes. Rápido y sin complicaciones.</p>
-      </div>
-      <div class="card">
-        <h3>Crédito Hipotecario</h3>
-        <p>Haz realidad tu sueño de tener casa propia con nuestras tasas preferenciales.</p>
-      </div>
-      <div class="card">
-        <h3>Crédito para Vehículos</h3>
-        <p>Compra el auto que deseas con cómodas cuotas y seguro incluido.</p>
-      </div>
-    </section>
+function Page({ title, children }) { return ( <div className="p-6"> <Logo /> <h2 className="text-2xl font-bold mb-4 text-blue-700">{title}</h2> <div className="space-y-4">{children}</div> </div> ); }
 
-    <section id="inversiones" class="section">
-      <h2>Inversiones</h2>
-      <div class="card">
-        <h3>CDT</h3>
-        <p>Invierte tu dinero de forma segura con rendimientos garantizados.</p>
-      </div>
-      <div class="card">
-        <h3>Fondos de Inversión</h3>
-        <p>Diversifica tu portafolio con opciones a corto, mediano y largo plazo.</p>
-      </div>
-    </section>
+function Home() { return ( <div className="p-8 space-y-4"> <Logo /> <p className="text-lg">Soluciones en Gestión Bancaria</p> <p> Somos una entidad financiera moderna, comprometida con la transformación digital del sector bancario. El nombre "Lumin" proviene de la palabra "lumen", que significa luz, reflejando nuestra misión de guiar las decisiones financieras. S.G.B significa Soluciones en Gestión Bancaria. </p> <p><strong>Visión:</strong> Ser la entidad líder en soluciones digitales con cobertura nacional e internacional.</p> <p><strong>Misión:</strong> Brindar productos y servicios financieros confiables, eficientes y accesibles, apoyados en tecnología.</p>
 
-    <section id="seguros" class="section">
-      <h2>Seguros</h2>
-      <div class="card">
-        <h3>Seguro de Vida</h3>
-        <p>Protege a tu familia con coberturas amplias y planes accesibles.</p>
-      </div>
-      <div class="card">
-        <h3>Seguro para Vehículos</h3>
-        <p>Asistencia 24/7 y cobertura contra todo riesgo.</p>
-      </div>
-    </section>
-
-    <section id="servicios" class="section">
-      <h2>Servicios Adicionales</h2>
-      <div class="card">
-        <h3>Banca en Línea</h3>
-        <p>Consulta tus saldos, transfiere fondos y paga servicios desde cualquier lugar.</p>
-      </div>
-      <div class="card">
-        <h3>Atención Personalizada</h3>
-        <p>Asesores financieros siempre disponibles para ayudarte.</p>
-      </div>
-    </section>
+<div className="grid grid-cols-2 gap-4">
+    <Link to="/captacion"><Button variant="outline">Productos de Captación</Button></Link>
+    <Link to="/tarjetas"><Button variant="outline">Tarjetas de Crédito</Button></Link>
+    <Link to="/creditos"><Button variant="outline">Créditos</Button></Link>
+    <Link to="/servicios"><Button variant="outline">Servicios Digitales</Button></Link>
   </div>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Banco Lumin S.G.B. Todos los derechos reservados.</p>
-  </footer>
-</body>
-</html>
+); }
+
+function Captacion() { return ( <Page title="Productos de Captación"> <Card><CardContent><h3 className="font-semibold">Lumin Joven</h3><p>Diseñada para jóvenes de 14 a 25 años. Tasa: 2.5% E.A. Sin cuota de manejo.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Lumin Plus</h3><p>Tasa: 2% a 3.5% E.A. según saldo. Dirigida a personas naturales.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">CDT Lumin Rentable</h3><p>Tasa: Hasta 9% E.A. Plazo: 90 a 360 días. Desde $1.000.000.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Lumin Negocios</h3><p>Cuenta empresarial. Tasa: 2.2% E.A. Desde $5M. Requisitos: NIT y cédula del representante legal.</p><FileUpload /></CardContent></Card> </Page> ); }
+
+function Tarjetas() { return ( <Page title="Tarjetas de Crédito"> <Card><CardContent><h3 className="font-semibold">Lumin Clásica</h3><p>Cupo: $5M. Tasa: 27.5% E.A. Avance: 40%</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Lumin Oro</h3><p>Cupo: $15M. Tasa: 25.9% E.A. Avance: 50%</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Lumin Platinum</h3><p>Cupo: $30M. Tasa: 24% E.A. Avance: 60%</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Lumin Empresarial</h3><p>Cupo variable. Tasa: 23% E.A. Avance: 70%</p><FileUpload /></CardContent></Card> </Page> ); }
+
+function Creditos() { return ( <Page title="Créditos"> <Card><CardContent><h3 className="font-semibold">Libre Inversión</h3><p>Hasta $50M. Tasa: 20% E.A. Plazo: 12 a 60 meses.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Hipotecario</h3><p>Hasta $300M. Tasa: 16% E.A. fija. Hasta 20 años.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Vehicular</h3><p>Hasta $100M. Tasa: 17% E.A. Plazo: hasta 84 meses.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Empresarial</h3><p>Tasa: 18% E.A. Monto según análisis financiero.</p><FileUpload /></CardContent></Card> </Page> ); }
+
+function Servicios() { return ( <Page title="Servicios Personales y Digitales"> <Card><CardContent><h3 className="font-semibold">App Lumin Móvil</h3><p>Gestión de cuentas, pagos y transferencias.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Banca Virtual Web</h3><p>Operaciones bancarias desde computador.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Asistente Virtual LIA</h3><p>Atención 24/7 vía chat y voz.</p><FileUpload /></CardContent></Card> <Card><CardContent><h3 className="font-semibold">Portafolio Digital Personalizado</h3><p>Recomendaciones según perfil financiero.</p><FileUpload /></CardContent></Card> </Page> ); }
+
+export default function App() { return ( <Router> <Routes> <Route path="/" element={<Home />} /> <Route path="/captacion" element={<Captacion />} /> <Route path="/tarjetas" element={<Tarjetas />} /> <Route path="/creditos" element={<Creditos />} /> <Route path="/servicios" element={<Servicios />} /> </Routes> </Router> ); 
